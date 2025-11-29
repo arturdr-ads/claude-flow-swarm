@@ -1,0 +1,183 @@
+{
+  "timestamp": "2025-11-28T22:39:54.777848",
+  "analysis_duration": 3.857672929763794,
+  "total_mcps_analyzed": 11,
+  "categories_found": 9,
+  "overlap_matrix": {},
+  "memory_analysis": {
+    "usage": {
+      "redis": {
+        "base": 15,
+        "category": "Storage/Cache",
+        "active_estimate": 22.5,
+        "peak_estimate": 30.0
+      },
+      "agentdb": {
+        "base": 25,
+        "category": "Storage/Vector",
+        "active_estimate": 37.5,
+        "peak_estimate": 50.0
+      },
+      "qdrant": {
+        "base": 30,
+        "category": "Storage/Vector",
+        "active_estimate": 45.0,
+        "peak_estimate": 60.0
+      },
+      "context7": {
+        "base": 20,
+        "category": "Storage/Document",
+        "active_estimate": 30.0,
+        "peak_estimate": 40.0
+      },
+      "hetzner": {
+        "base": 10,
+        "category": "Infrastructure/Cloud",
+        "active_estimate": 15.0,
+        "peak_estimate": 20.0
+      },
+      "coolify": {
+        "base": 12,
+        "category": "Infrastructure/Deployment",
+        "active_estimate": 18.0,
+        "peak_estimate": 24.0
+      },
+      "flow_nexus": {
+        "base": 18,
+        "category": "Infrastructure/Cloud",
+        "active_estimate": 27.0,
+        "peak_estimate": 36.0
+      },
+      "docling": {
+        "base": 22,
+        "category": "Processing/Document",
+        "active_estimate": 33.0,
+        "peak_estimate": 44.0
+      },
+      "nanobanana": {
+        "base": 28,
+        "category": "Processing/Media",
+        "active_estimate": 42.0,
+        "peak_estimate": 56.0
+      },
+      "claude_flow": {
+        "base": 35,
+        "category": "Orchestration/Workflow",
+        "active_estimate": 52.5,
+        "peak_estimate": 70.0
+      },
+      "tavily": {
+        "base": 8,
+        "category": "Processing/Search",
+        "active_estimate": 12.0,
+        "peak_estimate": 16.0
+      }
+    },
+    "category_breakdown": {
+      "Storage/Cache": 15,
+      "Storage/Vector": 55,
+      "Storage/Document": 20,
+      "Infrastructure/Cloud": 28,
+      "Infrastructure/Deployment": 12,
+      "Processing/Document": 22,
+      "Processing/Media": 28,
+      "Orchestration/Workflow": 35,
+      "Processing/Search": 8
+    }
+  },
+  "performance_results": {
+    "tavily": [
+      370.59473991394043
+    ],
+    "hetzner": [
+      2370.534896850586
+    ],
+    "docling": [
+      570.5888271331787
+    ],
+    "redis": [
+      270.47157287597656
+    ],
+    "agentdb": [
+      270.49803733825684
+    ]
+  },
+  "redundancies": [
+    {
+      "type": "HIGH_OVERLAP",
+      "mcps": [
+        "agentdb",
+        "qdrant"
+      ],
+      "reason": "Both are vector databases with similar functionality",
+      "recommendation": "Consolidate to one vector DB",
+      "impact": "Save 25-30MB memory"
+    },
+    {
+      "type": "PARTIAL_OVERLAP",
+      "mcps": [
+        "context7",
+        "docling",
+        "agentdb"
+      ],
+      "reason": "Context7 = Docling + Vector DB functionality",
+      "recommendation": "Use Docling + AgentDB instead of Context7",
+      "impact": "Save 20MB memory"
+    },
+    {
+      "type": "MODERATE_OVERLAP",
+      "mcps": [
+        "coolify",
+        "flow_nexus"
+      ],
+      "reason": "Both handle application deployment",
+      "recommendation": "Choose based on self-hosted vs managed preference",
+      "impact": "Save 12-18MB memory"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "action": "CONSOLIDATE_VECTOR_DB",
+      "description": "Choose either AgentDB OR Qdrant, not both",
+      "memory_saved": "25-30MB",
+      "complexity": "Low - similar APIs"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "REPLACE_CONTEXT7",
+      "description": "Use Docling + Redis/AgentDB combination",
+      "memory_saved": "20MB",
+      "complexity": "Medium - requires integration"
+    },
+    {
+      "priority": "LOW",
+      "action": "CHOOSE_DEPLOYMENT_PLATFORM",
+      "description": "Select Coolify OR Flow Nexus based on needs",
+      "memory_saved": "12-18MB",
+      "complexity": "Low"
+    }
+  ],
+  "optimized_configuration": {
+    "essential": {
+      "tavily": "Web search (unique)",
+      "hetzner": "Cloud infrastructure (unique provider)",
+      "nanobanana": "Image processing (unique)",
+      "claude_flow": "Orchestration (core system)",
+      "docling": "Document processing (unique)",
+      "redis": "Cache storage (essential performance)",
+      "agentdb": "Vector database (chosen over qdrant)"
+    },
+    "optional": {
+      "coolify": "Self-hosted deployment (if needed)",
+      "flow_nexus": "Managed cloud deployment (if needed)"
+    },
+    "redundant": {
+      "qdrant": "Redundant with AgentDB (both vector DBs)",
+      "context7": "Redundant (Docling + Vector DB combo)"
+    },
+    "memory_optimized": 143,
+    "memory_current": 193,
+    "memory_saved": 50
+  }
+}

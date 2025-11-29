@@ -1,0 +1,56 @@
+# 🚀 Claude Flow Swarm 2025 - Git Ignore
+
+# Dependencies pesados - não versionar
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Large binaries - remover arquivos >100MB
+*.so
+*.dll
+*.exe
+*.bin
+
+# Arquivos de sistema pesados
+mcp-servers/node_modules/onnxruntime-*/
+mcp-servers/node_modules/@onnxruntime-*/
+
+# Arquivos de log
+logs/
+*.log
+
+# Temporários
+.tmp/
+temp/
+cache/
+
+# Configurações locais
+.claude/settings.local.json
+.vscode/settings.json
+
+# Backup do sistema (já está no GitHub)
+backup/
+*.backup
+
+# Arquivos grandes específicos do MCP
+mcp-servers/node_modules/*/*.so
+mcp-servers/node_modules/*/*.dll
+mcp-servers/node_modules/*/*.dylib
+
+# Arquivos do WASM compilados
+*.wasm
+*.js.map

@@ -1,0 +1,62 @@
+{
+  "persistent_mcps": {
+    "mcp__redis": {
+      "enabled": true,
+      "strategy": "persistent",
+      "connection_pool": true,
+      "memory_limit": "15MB",
+      "priority": "HIGH"
+    },
+    "mcp__claude-flow": {
+      "enabled": true,
+      "strategy": "persistent",
+      "tools_count": "105+",
+      "memory_limit": "25MB",
+      "priority": "HIGH"
+    },
+    "mcp__tavily": {
+      "enabled": true,
+      "strategy": "persistent",
+      "api_integration": "real",
+      "memory_limit": "12MB",
+      "priority": "HIGH"
+    }
+  },
+  "lazy_mcps": {
+    "mcp__hetzner": {
+      "enabled": true,
+      "strategy": "lazy",
+      "activation": "on_demand",
+      "cold_start": "400ms",
+      "memory_limit": "15MB"
+    },
+    "mcp__docling": {
+      "enabled": true,
+      "strategy": "lazy",
+      "activation": "on_demand",
+      "cold_start": "300ms",
+      "memory_limit": "12MB"
+    },
+    "mcp__flow-nexus": {
+      "enabled": true,
+      "strategy": "lazy",
+      "activation": "on_demand",
+      "cold_start": "800ms",
+      "memory_limit": "20MB"
+    },
+    "mcp__agentdb": {
+      "enabled": true,
+      "strategy": "lazy",
+      "activation": "on_demand",
+      "cold_start": "200ms",
+      "memory_limit": "18MB"
+    },
+    "mcp__coolify": {
+      "enabled": true,
+      "strategy": "lazy",
+      "activation": "on_demand",
+      "cold_start": "600ms",
+      "memory_limit": "15MB"
+    }
+  }
+}
